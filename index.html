@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Matthew Hart Portfolio</title>
+    <link rel="stylesheet" href="css/transition-animations.css"/>
+    <link rel="stylesheet" href="css/single-page.css"/>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body>
+
+<div class="pt-wrapper">
+    <div class="pt-trigger-container">
+		<button id="nextpage" class="pt-trigger" data-animation="60" data-goto="-1">Go to next page</button>
+		<button id="prevpage" class="pt-trigger" data-animation="61" data-goto="-2">Go to previous page</button>
+    </div>
+
+	
+    <div class="pt-page pt-page-1">	
+	  <header>
+		<a href="/">
+		<div class="header-1">
+		<p class="logo-1">Matthew Hart</p>
+		<p class="logo-2">Web Design & SEO</p>
+		</div>
+	  </a>
+	  <div id="menu">
+	  <div class="menu-btn">
+		<a href="previouswork">
+		  Previous Work
+		</a>
+	  </div>
+	  <div class="menu-btn">
+		<a href="about">
+		  About
+		</a>
+	  </div>
+	  <div class="menu-btn">
+		<a href="contact">
+		  Contact
+		</a>
+	  </div>
+	  </div>
+	  </header>
+	  <ul id="slides">
+		<li class="slide showing"><div class="slide-text">Design</div></li>
+		<li class="slide"><div class="slide-text">Development</div></li>
+		<li class="slide"><div class="slide-text">SEO</div></li>
+	  </ul>
+	  <script type="text/javascript" src="js/slider.js"></script>
+
+	</div>
+
+	<div id="row-1" class="pt-page pt-page-2">
+	  <div class="col-1">
+		<img src="media/phone.png"/>
+		<img src="media/tablet.png"/>
+		<img src="media/desktop.png"/>
+			
+		</div>
+	  <div class="col-2">
+		<h2>Sites Built Fully Responsive On Any Device, Any Screen Size. </h2>
+
+		<p>
+			All sites I create are designed to look great on all devices. There is a common trend among developers, to build sites compatible with common screen sizes, but neglecting the more unusual ones. Meaning those viewing the site on an iPad or Galaxy will have no trouble, but those attempting access on less common phones or tablets, may just see a garbled mess. I take the time to ensure that sites I build look beautiful from the smallest phones, to the largest monitors, and everything in between. In industries where market-research suggests traffic is expected to primarily come from tablets and smart phones, sites will be designed to be mobile-first.
+		</p>
+	  </div>
+	</div>
+
+
+	<div id="row-2" class="pt-page pt-page-3">
+	  <div class = "col-1">
+		<h2>Full Service SEO/SEM</h2>
+		<p>
+			A multi-pronged approach to digital marketing, utilizing social media and email marketing to create and build relationships with potential customers,  ppc ads and targeted ads to start bringing in new business immediately, and a wide variety of methods to create an effective, diverse and safe backlink profile to get you on the first page of search engine results and establish you as an authority in your field.   
+		</p>
+	  </div>
+	  <div class = "col-2">
+		<img src="media/dev.png" />
+	  </div>
+	</div>
+
+	<div id="row-3" class="pt-page pt-page-2">
+		<h2>Lightning Fast Load Times</h2>
+		<br/>
+	  <div class = "col-1">
+		<div class ="r3">
+		<p>It's been consistently shown that if a page doesn't load within the first couple seconds, many users will just click away, never to return. Not to mention the fact that Google punishes slow sites in search results. I build fast and efficient sites from the ground up, but am also highly-skilled at speeding up old sites that are having performance issues.</p> 
+		</div>
+		
+	  </div>
+	  <div class = "col-2">
+	  <p><strong>My Speed toolbox includes, but is not limited to:</strong></p>
+		<ul>
+		<li>Compression</li>
+		<li>Script Deferment</li>
+		<li>Above The Fold Prioritization</li>
+		<li>Database Optimization</li>
+		<li>Efficient Coding</li>
+		<li>Proper Caching</li>
+        <li>Resource Compilation</li>
+		</div>
+	</div>
+	
+	
+</div>
+
+
+
+<div class="pt-message">
+    <p>Your browser does not support CSS animations.</p>
+</div>
+	
+<script src="js/jquery-2.1.3.min.js"></script>
+<script src="js/transition.js"></script>
+<script src="js/jquery-mousewheel-master/jquery.mousewheel.js"></script>
+<script src="js/scrollflip.js"></script>
+</body>
+</html>

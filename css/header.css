@@ -1,0 +1,94 @@
+/*//////////// Headeer///////////*/
+p {
+	line-height: 1.5em;
+}	
+header {
+  height: 110px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+}
+
+.header-1 {
+  font-size: 32px;
+  font-family: Century Gothic;
+  margin-left: 40px;
+  text-shadow: 2px 2px 2px white;
+}
+
+.logo-1 {
+  margin-top: 10px;
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-bottom: 0;
+  letter-spacing: 1.8px;
+}
+
+.logo-2 {
+  font-size: 28px;	
+  padding-top: 0;
+  margin-top: 0;
+  letter-spacing: -1.2px;
+}
+
+#menu {
+ position: absolute;
+ bottom: 16px;
+ right: 0;
+ margin-right: 0;
+ text-align: center;
+ padding-top: 12px;
+ font-size: 18px;
+}
+
+
+.menu-btn:hover {
+  filter:brightness(150%);
+}
+
+.menu-btn {
+	margin-right: 40px;
+    margin-left: 20px;
+	color: black;
+}
+
+.header-1, #menu, .menu-btn {
+  display: inline-block;
+}
+
+@media(max-width: 820px) {
+
+.menu-btn {
+	margin-right: 10px;
+	margin-left: 30px;
+}
+}
+
+@media(max-width: 630px) {
+  #menu {
+	bottom: -20px;
+	left: 50%;
+    transform: translate(-50%);
+    width: 100%;
+  }
+  .header-1 {
+    width: 100%;
+    margin: auto;
+    text-align: center;
+  }
+  h1 {
+  margin-top: 160px;
+}
+
+@media(max-width: 450px) {
+	#menu {
+		bottom: -30px;
+	}
+	.menu-btn {
+		margin-right: 20px;
+		margin-left: 20px;
+	}
+}
+
+/*////////// End Header ///////////////*/

@@ -1,0 +1,166 @@
+body {
+  background: url("../media/center.jpg");
+  background-size:cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: black;
+  font-family:sans-serif;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+.ctright {
+	width: 80%;
+	margin: auto;
+}
+
+
+h1 {
+  margin-top: 140px;
+  text-align: center;
+}
+
+.list-container {
+	width: 50%
+	margin: auto;
+}
+
+
+ .front img {
+  width: 100%;
+  }
+
+.ws {
+   text-align: center;
+   text-decoration: underline;
+	margin-top: 80px;
+   }
+.back ul { 
+	text-align: center;
+	list-style: none;
+	padding-left: 0;
+}
+
+.flip-container:hover {
+       cursor: pointer;
+       cursor: hand;
+}
+
+.ws a:hover {
+	color: blue;
+}
+
+/* entire container, keeps perspective */
+.flip-container {
+	perspective: 1000px;
+}
+	/* flip the pane when hovered */
+	.clickr {
+		transform: rotateY(180deg);
+	}
+
+.flip-container, .front, .back {
+	width: 940px;
+	height: 600px;
+	margin: auto;
+}
+
+/* flip speed goes here */
+.flipper {
+	transition: 1.2s;
+	transform-style: preserve-3d;
+
+	position: relative;
+}
+
+/* hide back of pane during swap */
+.front, .back {
+	backface-visibility: hidden;
+
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+/* front pane, placed above back */
+.front {
+	z-index: 2;
+	/* for firefox 31 */
+	transform: rotateY(0deg);
+}
+
+/* back, initially hidden pane */
+.back {
+	transform: rotateY(180deg);
+  background: url("../media/grey2.jpg");
+  background-size: cover;
+  font-size: 22px;
+  box-shadow:0 0 5px;
+}
+
+.navleft {
+    border-right: none;
+}
+
+@media(max-width: 1280px) {
+	.flip-container, .front, .back {
+	width: 705px;
+	height: 400px;
+	font-size: 18px;
+	}
+	.flip-container, .front {
+	margin-bottom: 48px;
+}
+.back {
+	padding-bottom: 48px;
+}
+}
+
+@media(max-width: 930px) {
+
+	.flip-container, .front, .back {
+	width: 470px;
+	height: 300px;
+		font-size: 16px;
+	}
+		.flip-container, .front {
+	margin-bottom: 0;
+}
+.back {
+	padding-bottom: 0;
+}
+}
+
+@media(max-width: 630px) {
+  .ws {
+	margin-top: 30px;
+   }
+  .back {
+	font-size: 14px;
+  }
+  .ctright {
+  width: 100%;
+  }
+}
+
+@media(max-width: 480px) {
+.flip-container, .front, .back {
+	width: 330px;
+    height: 210px;
+    top: 20px;
+	font-size: 12px;
+}
+  h1 {
+    font-size: 20px;
+  }
+
+@media(max-width: 411px) {
+
+  .info p {
+    font-size: 14px;
+	}
+}
