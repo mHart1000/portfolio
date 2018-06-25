@@ -23,7 +23,7 @@ footer {
 }
 
 
-@media(max-width: 930px) {
+@media(max-width: 1020px) {
   .f-col {
 	  width: 32%;
 	  	padding: 15px 0;
