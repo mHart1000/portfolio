@@ -31,7 +31,8 @@ h1 {
 
 
  .front img {
-  width: 100%;
+  	width: 100%;
+  	box-shadow: 5px 5px 5px gray;
   }
 
 .ws {
@@ -64,9 +65,10 @@ h1 {
 	}
 
 .flip-container, .front, .back {
-	width: 940px;
+	width: 1000px;
 	height: 600px;
 	margin: auto;
+	margin-bottom: 5px;
 }
 
 /* flip speed goes here */
@@ -108,8 +110,8 @@ h1 {
 
 @media(max-width: 1280px) {
 	.flip-container, .front, .back {
-	width: 705px;
-	height: 400px;
+	width: 750px;
+	height: 450px;
 	font-size: 18px;
 	}
 	.flip-container, .front {
@@ -123,7 +125,7 @@ h1 {
 @media(max-width: 930px) {
 
 	.flip-container, .front, .back {
-	width: 470px;
+	width: 500px;
 	height: 300px;
 		font-size: 16px;
 	}
@@ -150,7 +152,7 @@ h1 {
 @media(max-width: 480px) {
 .flip-container, .front, .back {
 	width: 330px;
-    height: 210px;
+    height: 198px;
     top: 20px;
 	font-size: 12px;
 }
