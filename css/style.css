@@ -124,7 +124,7 @@ p {
 }
 
 .panel-med-dark-bg {
-  background-color: rgba(0, 0, 0, 0.77);
+  background-color: rgba(0, 0, 0, 0.8);
   padding: 40px;
   border-radius: 8px;
   color: rgb(241 237 207 / 90%);;
@@ -135,7 +135,7 @@ p {
     background-color: rgb(1 15 50 / 90%);
     padding: 40px;
     border-radius: 20px;
-    color: rgba(255, 211, 146, 0.9);
+    color: rgb(255 211 146);
     font-size: 22px;
     line-height: 1.8;
 }
@@ -153,7 +153,7 @@ p {
   margin: auto;
 }
 .shadow-filter {
-  background-color: rgba(52, 52, 52, 0.3);
+  background-color: rgba(120, 120, 120, 0.4);
   height: 100%;
   width: 100%;
 }
@@ -196,7 +196,7 @@ header {
  right: 0;
  margin-right: 0;
  text-align: center;
- padding-top: 18px;
+ padding-top: 22px;
  font-size: 18px;
 }
 
@@ -207,8 +207,9 @@ header {
 
 .menu-btn {
 	margin-right: 40px;
-    margin-left: 20px;
+  margin-left: 20px;
 	color: black;
+  cursor: pointer;
 }
 
 .header-1, #menu, .menu-btn {
@@ -327,20 +328,19 @@ header {
 
 
 #row-3 {
-	background: url("../media/chalkboard.jpg");
+	background: url("../media/chalkboard2.jpg");
 	background-size: cover;
   z-index: 0;
-  color: yellow;
   font-family: 'Shadows Into Light Two', cursive;
-  font-size: 54px;
+  font-size: 42px;
   letter-spacing: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
-#row-3 a {
-  color: yellow;
+#row-3, #row-3 a {
+  color: #bedc3a;
 }
 
 .chalkboard {
@@ -364,8 +364,9 @@ header {
 
 
 #row-3 h2{
-	margin: 160px 0 80px;
-  font-size: 64px;
+	margin: 0 0 80px;
+  font-size: 60px;
+  text-align: center;
 }
 
 #row-3 ul {

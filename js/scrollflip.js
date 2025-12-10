@@ -25,6 +25,29 @@ if(isMobileWidth() === false) {
                      $("#prevpage").trigger("click");
                 }
            });
+  
+          const aboutBtn = document.querySelector('.about-btn')
+          const prevWorkBtn = document.querySelector('.prev-work-btn')
+          const contactBtn = document.querySelector('.contact-btn')
+          aboutBtn.addEventListener('click', () => {
+             $("#nextpage").trigger("click")
+          })
+          prevWorkBtn.addEventListener('click', () => {
+             $("#nextpage").trigger("click")
+             setTimeout(function() {
+              $("#nextpage").trigger("click")
+             }, 700)
+          })
+          contactBtn.addEventListener('click', () => {
+             $("#nextpage").trigger("click")
+             setTimeout(function() {
+              $("#nextpage").trigger("click")
+             }, 700)
+             setTimeout(function() {
+              $("#nextpage").trigger("click")
+             }, 1400)
+          })
+
       });
  });
 }
