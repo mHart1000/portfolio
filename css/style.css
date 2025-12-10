@@ -96,8 +96,39 @@ p {
 }
 /*///////// End Slider ///////////////////*/
 
+#hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.myVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -1;
+}
 
+.myVideo2 {
+  width: 50%;
+  height: 50%;
+}
 
+.panel-dark-bg {
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 40px;
+  border-radius: 8px;
+}
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.boxed {
+  margin: auto;
+  max-width: 900px;
+}
 /*//////////// Headeer///////////*/
 
 header {
