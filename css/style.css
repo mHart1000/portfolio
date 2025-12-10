@@ -1,6 +1,6 @@
 body {
     color: black;
-    font-family:sans-serif;
+    font-family: system-ui;
     font-size: 18px;
 }
 
@@ -115,10 +115,21 @@ p {
   height: 50%;
 }
 
-.panel-dark-bg {
-  background-color: rgba(0, 0, 0, 0.7);
+.panel-med-dark-bg {
+  background-color: rgba(0, 0, 0, 0.77);
   padding: 40px;
   border-radius: 8px;
+  color: rgb(241 237 207 / 90%);;
+  font-size: 20px;
+  line-height: 1.8;
+}
+.panel-dark-bg {
+  background-color: rgba(0, 0, 0, 0.86);
+  padding: 60px;
+  border-radius: 8px;
+  color: rgb(241 237 207 / 90%);;
+  font-size: 22px;
+  line-height: 1.8;
 }
 .flex-center {
   display: flex;
@@ -151,14 +162,14 @@ header {
   padding-top: 0;
   padding-bottom: 0;
   margin-bottom: 0;
-  letter-spacing: 1.8px;
+  letter-spacing: 1px;
 }
 
 .logo-2 {
-  font-size: 28px;	
+  font-size: 32px;	
   padding-top: 0;
   margin-top: 0;
-  letter-spacing: -1.2px;
+  letter-spacing: 1.9px;
 }
 
 #menu {
@@ -279,7 +290,7 @@ header {
 }
 
 #row-2 {
-	background-color: #7180AC;
+	background: url("../media/collage2.jpg");
 }
 
 #row-2 h2 {
@@ -288,8 +299,6 @@ header {
 }
 
 #row-2 p {
-	width: 40%;
-	margin: 40px auto 0;
 }
 
 #row-2 .col-2 {
@@ -305,7 +314,7 @@ header {
 #row-3 {
 	background: url("../media/lightning3.jpg");
 	background-size: cover;
-        padding: 0 0 50px 0;
+  padding: 0 0 50px 0;
 }
 
   #row-3 .col-1 p, #row-3 .col-2 p, #row-3 .col-2 ul, #row-3 h2 {
