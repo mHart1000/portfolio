@@ -132,10 +132,10 @@ p {
   line-height: 1.8;
 }
 .panel-dark-bg {
-    background-color: rgb(1 15 50 / 86%);
+    background-color: rgb(1 15 50 / 90%);
     padding: 40px;
     border-radius: 20px;
-    color: rgb(255 227 185 / 90%);
+    color: rgba(255, 211, 146, 0.9);
     font-size: 22px;
     line-height: 1.8;
 }
@@ -151,6 +151,11 @@ p {
 .fit-content {
   width: fit-content;
   margin: auto;
+}
+.shadow-filter {
+  background-color: rgba(52, 52, 52, 0.3);
+  height: 100%;
+  width: 100%;
 }
 /*//////////// Headeer///////////*/
 
@@ -320,10 +325,6 @@ header {
         padding: 80px 0;
 }
 
-#row-2 {
-    display: flex;
-    align-items: center;
-}
 
 #row-3 {
 	background: url("../media/chalkboard.jpg");
@@ -347,7 +348,7 @@ header {
   height: 100%;
   width: 100%;
 }
-  #row-3 .col-1 p, #row-3 .col-2 p, #row-3 .col-2 ul  {
+#row-3 .col-1 p, #row-3 .col-2 p, #row-3 .col-2 ul  {
 	background-color: black;
 	text-shadow: none;
 	opacity: .54;
