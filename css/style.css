@@ -1,3 +1,11 @@
+@font-face {
+  font-family: 'Shadows Into Light Two';
+  src: url('./fonts/ShadowsIntoLightTwo-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 body {
     color: black;
     font-family: system-ui;
@@ -140,6 +148,10 @@ p {
   margin: auto;
   max-width: 900px;
 }
+.fit-content {
+  width: fit-content;
+  margin: auto;
+}
 /*//////////// Headeer///////////*/
 
 header {
@@ -153,7 +165,7 @@ header {
 }
 
 .header-1 {
-  font-size: 32px;
+  font-size: 34px;
   font-family: Century Gothic;
   margin-left: 40px;
   text-shadow: 2px 2px 2px white;
@@ -292,6 +304,7 @@ header {
 
 #row-2 {
 	background: url("../media/collage2.jpg");
+	background-size: cover;
 }
 
 #row-2 h2 {
@@ -317,8 +330,9 @@ header {
 	background-size: cover;
   z-index: 0;
   color: yellow;
-  font-family: cursive;
-  font-size: 42px;
+  font-family: 'Shadows Into Light Two', cursive;
+  font-size: 54px;
+  letter-spacing: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -329,7 +343,7 @@ header {
 }
 
 .chalkboard {
-  background-color: rgba(0, 0, 0, 0.3);
+  /*background-color: rgba(0, 0, 0, 0.3);*/
   height: 100%;
   width: 100%;
 }
@@ -349,9 +363,8 @@ header {
 
 
 #row-3 h2{
-	text-align: center;
-	margin: 80px;
-  font-size: 48px;
+	margin: 160px 0 80px;
+  font-size: 64px;
 }
 
 #row-3 ul {
