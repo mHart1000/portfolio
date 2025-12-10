@@ -312,12 +312,27 @@ header {
 }
 
 #row-3 {
-	background: url("../media/lightning3.jpg");
+	background: url("../media/chalkboard.jpg");
 	background-size: cover;
-  padding: 0 0 50px 0;
+  z-index: 0;
+  color: yellow;
+  font-family: cursive;
+  font-size: 42px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+#row-3 a {
+  color: yellow;
 }
 
-  #row-3 .col-1 p, #row-3 .col-2 p, #row-3 .col-2 ul, #row-3 h2 {
+.chalkboard {
+  background-color: rgba(0, 0, 0, 0.3);
+  height: 100%;
+  width: 100%;
+}
+  #row-3 .col-1 p, #row-3 .col-2 p, #row-3 .col-2 ul  {
 	background-color: black;
 	text-shadow: none;
 	opacity: .54;
@@ -333,13 +348,9 @@ header {
 
 
 #row-3 h2{
-	display: inline-block;
 	text-align: center;
-	padding: 8px;
-	margin: 15px;
-	position: relative;
-	width:340px;
-    left: calc(50% - 180px);
+	margin: 80px;
+  font-size: 48px;
 }
 
 #row-3 ul {
