@@ -148,6 +148,8 @@ header {
   top: 0;
   right: 0;
   left: 0;
+  display: flex;
+  justify-content: space-between;
 }
 
 .header-1 {
@@ -173,12 +175,11 @@ header {
 }
 
 #menu {
- position: absolute;
  bottom: 16px;
  right: 0;
  margin-right: 0;
  text-align: center;
- padding-top: 12px;
+ padding-top: 18px;
  font-size: 18px;
 }
 
