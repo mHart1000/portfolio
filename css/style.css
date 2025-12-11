@@ -126,7 +126,7 @@ p {
   line-height: 1.8;
 }
 .panel-dark-bg {
-    background-color: rgb(1 15 50 / 90%);
+    background-color: rgb(1 15 50 / 92%);
     padding: 40px;
     border-radius: 20px;
     color: rgb(255 211 146);
@@ -220,6 +220,7 @@ header {
 
 @media(max-width: 630px) {
   #menu {
+    display: none;
     padding-top: 5px;
   }
   .menu-btn {
@@ -227,7 +228,7 @@ header {
   }
   .header-1 {
     width: 100%;
-    margin: auto;
+    margin-left: 10px;
     text-align: center;
   }
 }
@@ -303,7 +304,7 @@ header {
 }
 
 #row-2 {
-	background: url("../media/collage2.jpg");
+	background: url("../media/collage4.jpg");
 	background-size: cover;
 }
 
