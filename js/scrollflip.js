@@ -31,12 +31,12 @@ if(isMobileWidth() === false) {
           const contactBtn = document.querySelector('.contact-btn')
           aboutBtn.addEventListener('click', () => {
              $("#nextpage").trigger("click")
-          })
-          prevWorkBtn.addEventListener('click', () => {
-             $("#nextpage").trigger("click")
              setTimeout(function() {
               $("#nextpage").trigger("click")
              }, 700)
+          })
+          prevWorkBtn.addEventListener('click', () => {
+             $("#nextpage").trigger("click")
           })
           contactBtn.addEventListener('click', () => {
              $("#nextpage").trigger("click")
