@@ -18,7 +18,10 @@
     </div>
 
     <div class="pt-page pt-page-1">
-	  <header>
+      <video autoplay muted loop playsinline webkit-playsinline  class="heroVideo">
+        <source src="./media/sun1440.mp4" type="video/mp4">
+      </video>
+		<header>
 	    <a href="/">
 		  <div class="header-1">
 		  <p class="logo-1">Matthew Hart</p>
@@ -38,12 +41,11 @@
 	  </header>
         <ul id="slides">
           <li class="slide showing"><div class="slide-text">Development</div></li>
-          <li class="slide"><div class="slide-text">Design</div></li>
           <li class="slide"><div class="slide-text">Architecture</div></li>
           <li class="slide"><div class="slide-text">DevOps</div></li>
           <li class="slide"><div class="slide-text">Security</div></li>
-          <li class="slide"><div class="slide-text">Marketing</div></li>
-          <li class="slide"><div class="slide-text">SEO</div></li>
+          <li class="slide"><div class="slide-text">Design</div></li>
+          <li class="slide"><div class="slide-text">Digital Marketing</div></li>
 	    </ul>
 	  <script type="text/javascript" src="js/slider.js"></script>
 
@@ -54,7 +56,7 @@
 		<div class = "boxed panel-dark-bg">
 		  <h2></h2>
 		  <p class="">
-		     I have over a decade of experience in full-stack software development, devOps, digital marketing, and cybersecurity. I've spent that time building and maintaining complex user-focused applications in the healthcare, security, retail, construction, hospitality & real-estate industries. 
+		     I have over a decade of experience in full-stack software development, devOps, digital marketing, and cybersecurity. I've spent that time building and maintaining complex, user-focused applications in the healthcare, security, retail, construction, hospitality & real-estate industries. 
 		  </p>
 		  <p class="">
             I've taken small businesses from brand new startup to profitable, and built applications with thousands of daily users. I've worked on everything from cutting edge AI tools, to messaging and video-chat apps, to electronic health records that require patient data to be secured in compliance with strict HIPAA standards. 
@@ -67,20 +69,20 @@
 
 	<div id="row-1" class="pt-page pt-page-2 flex-center">
       <video autoplay muted loop playsinline webkit-playsinline  class="bgVideo">
-        <source src="./media/sunrise.mp4" type="video/mp4">
+        <source src="./media/fantasy-beach.mp4" type="video/mp4">
       </video>
 	  <div class="boxed panel-med-dark-bg">
 		<h2>
 		</h2>
 
 		<p>
-			Computer science is the closest thing we have to magic. We infused sand with electricity, and commanded it to do our bidding. With enough time, focus and esoteric symbols we can turn our ideas into reality. We have the power to build tools that solve almost any problem, share knowledge across the planet in an instant, and utilize data-driven approaches to making lives better. 
+			Computer science is the closest thing we have to magic. We infuse sand with electricity and command it using esoteric symbols to turn our ideas into reality. We have the power to build tools that solve almost any problem, share knowledge across the planet in an instant, and utilize data-driven approaches to making lives better. 
 		</p>
 		<p>
-			But wielding tools this powerful comes with responsibility. We’re building in a world where technology is routinely used for theft, propaganda, data-hoarding, and quiet forms of manipulation. Security in such a world is non-negotiable. 
+			But wielding tools this powerful comes with responsibility. We’re building in a world where technology is routinely used for theft, sabotage, propaganda, data-hoarding, and quiet forms of manipulation. With the rise of automation, these threats continue to increase at an exponential rate. Security & awareness in such a world are non-negotiable. 
 		</p>
 		<p>
-			I design systems that collect the minimum data needed, store it safely, and give users real control over how it’s used. Security isn’t just about patching vulnerabilities, it’s about respecting boundaries. I assume that everything I build may someday be attacked or misused and I plan accordingly. 
+			I design systems that collect the minimum data needed, store it safely, and give users real control over how it’s used. Security isn’t just about patching vulnerabilities, it’s about respecting boundaries. I assume that everything I build may someday be attacked or misused, and I plan accordingly. 
 		</p>
 		<p>
 			I ship software that’s not only fast, reliable, and intuitive, but also transparent, accountable, and secure. Users put their trust in us when they use our products, and I take that responsibility very seriously.
@@ -117,4 +119,7 @@
 <script src="./js/scrollflip.js"></script>
 
 </body>
+<script>
+  document.querySelector('.heroVideo').playbackRate = 0.9
+</script>
 </html>
