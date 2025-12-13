@@ -77,20 +77,39 @@ p {
   text-align: center;
   font-size: 56px;
 }
+.long-slide-text {
+  margin-top: -20px;
+}
 
 	#slides {
 		top:-50px;
 	}
 
 
+.pulsate {
+  animation: myPulse 2s ease-in-out infinite;
+}
 
+@keyframes myPulse {
+  0%, 80% {
+    transform: scale(1);  
+  }
+
+  90% {
+    transform: scale(1.01); 
+  }
+
+  100% {
+    transform: scale(1); 
+  }
+}
 
 @media(max-width: 630px) {
 		
 
 	#slides {
 		height: 600px;
-		top: 250px;
+    top: 160px;
 	}
 		.slide-text {
 		font-size: 42px;
@@ -109,6 +128,13 @@ p {
   justify-content: center;
   align-items: center;
 }
+.heroVideo {
+    position: fixed;
+    object-fit: cover;
+    width: 100%;
+    min-height: 100%;
+    z-index: -1;
+}
 .bgVideo {
   position: fixed;
   right: 0;
@@ -120,7 +146,7 @@ p {
 .panel-med-dark-bg {
   background-color: rgba(0, 0, 0, 0.8);
   padding: 40px;
-  border-radius: 8px;
+  border-radius: 20px;
   color: rgb(241 237 207 / 90%);;
   font-size: 20px;
   line-height: 1.8;
@@ -167,7 +193,7 @@ header {
   font-size: 34px;
   font-family: Century Gothic;
   margin-left: 40px;
-  text-shadow: 2px 2px 2px white;
+  text-shadow: 2px 2px 2px #afafaf;
 }
 
 .logo-1 {
@@ -409,16 +435,28 @@ header {
   .pt-page-1 {
     z-index: 1;
     position: relative;
+    height: 932px;
   }
+  .heroVideo {
+    height: 972px;
+    top: -40px
+   }
   .bgVideo {
     z-index: 0;
    }
    .panel-dark-bg, .panel-med-dark-bg, #row-2, #row-3 {
      z-index: 1;
      position: relative;
+     border-radius: 0;
    }
    #row-1, #row-2 {
 	display: block;
+   }
+   #row-1 {
+     display: none;
+   }
+   .shadow-filter {
+    background-color: unset; 
    }
    #row-3, footer {
 	 height: auto;
@@ -428,6 +466,10 @@ header {
 	#row-1 h2 {
 		text-align: center;
 	}
+   #row-2 {
+	   background: url("../media/collage-mobile.jpg");
+	   background-size: cover;
+   }
   #row-2 .col-2 {
 	  padding-bottom: 0;
     padding-top: 40px;
