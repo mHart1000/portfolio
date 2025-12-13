@@ -83,7 +83,23 @@ p {
 	}
 
 
+.pulsate {
+  animation: myPulse 2s ease-in-out infinite;
+}
 
+@keyframes myPulse {
+  0%, 80% {
+    transform: scale(1);  
+  }
+
+  90% {
+    transform: scale(1.01); 
+  }
+
+  100% {
+    transform: scale(1); 
+  }
+}
 
 @media(max-width: 630px) {
 		
@@ -108,6 +124,13 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.heroVideo {
+    position: fixed;
+    object-fit: cover;
+    width: 100%;
+    min-height: 100%;
+    z-index: -1;
 }
 .bgVideo {
   position: fixed;
@@ -167,7 +190,7 @@ header {
   font-size: 34px;
   font-family: Century Gothic;
   margin-left: 40px;
-  text-shadow: 2px 2px 2px white;
+  text-shadow: 2px 2px 2px #afafaf;
 }
 
 .logo-1 {
