@@ -332,6 +332,7 @@ header {
 #row-2 {
 	background: url("../media/collage4.jpg");
 	background-size: cover;
+  background-position-x: center;
 }
 
 #row-2 h2 {
