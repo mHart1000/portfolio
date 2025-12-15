@@ -78,7 +78,8 @@ p {
   font-size: 56px;
 }
 .long-slide-text {
-  margin-top: -20px;
+  margin-top: -15px;
+  line-height: 1.2;
 }
 
 	#slides {
@@ -152,7 +153,7 @@ p {
   line-height: 1.8;
 }
 .panel-dark-bg {
-    background-color: rgb(1 15 50 / 92%);
+    background-color: rgb(1 15 50 / 93%);
     padding: 40px;
     border-radius: 20px;
     color: rgb(255 211 146);
@@ -173,7 +174,7 @@ p {
   margin: auto;
 }
 .shadow-filter {
-  background-color: rgba(120, 120, 120, 0.4);
+  background-color: rgba(77, 77, 77, 0.23);
   height: 100%;
   width: 100%;
 }
@@ -470,6 +471,7 @@ header {
    #row-2 {
 	   background: url("../media/collage-mobile.jpg");
 	   background-size: cover;
+     background-position-x: center;
    }
   #row-2 .col-2 {
 	  padding-bottom: 0;
