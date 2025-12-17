@@ -39,13 +39,7 @@ if(isMobileWidth() === false) {
              $("#nextpage").trigger("click")
           })
           contactBtn.addEventListener('click', () => {
-             $("#nextpage").trigger("click")
-             setTimeout(function() {
-              $("#nextpage").trigger("click")
-             }, 700)
-             setTimeout(function() {
-              $("#nextpage").trigger("click")
-             }, 1400)
+             $("#prevpage").trigger("click")
           })
 
       });
