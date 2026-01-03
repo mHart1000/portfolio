@@ -276,7 +276,6 @@ header {
 /*// Frames ///*/
 
 .pt-page-1 {
-    background: url("../media/center.jpg");
 	background-size: cover;
 	background-position: center;
 	display: flex;
