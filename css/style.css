@@ -412,7 +412,28 @@ header {
 /*/////////////// Media Queries ///////////////*/
 
 
-@media(max-width: 1070px) {
+@media(max-width: 1400px) {
+  .panel-med-dark-bg {
+    font-size: 18px;
+    padding: 30px;
+  }
+  .panel-dark-bg {
+    font-size: 20px;
+    padding: 30px;
+  }
+  #slides {
+    top: -55px;
+  }
+  #row-3 {
+    font-size: 38px;
+  }
+  #row-3 h2{
+    font-size: 50px;
+  }
+  .slide-text {
+    font-size: 54px;
+  }
+
 }
 
 @media(max-width: 930px) {
