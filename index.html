@@ -33,7 +33,7 @@
     </div>
 
     <div class="pt-page pt-page-1">
-      <video autoplay muted loop playsinline webkit-playsinline  class="heroVideo">
+      <video autoplay muted loop playsinline webkit-playsinline preload="auto" class="heroVideo">
         <source src="./media/sun1440.mp4" type="video/mp4">
       </video>
 		<header>
@@ -124,7 +124,23 @@
 <script src="./js/transition.js"></script>
 <script src="./js/jquery-mousewheel-master/jquery.mousewheel.js"></script>
 <script src="./js/scrollflip.js"></script>
-<script>document.querySelector('.heroVideo').playbackRate = 0.9</script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    let heroVideo = document.querySelector('.heroVideo')
+    heroVideo.playbackRate = 0.9
+    
+    // iOS Safari autoplay fix
+    let playPromise = heroVideo.play()
+    if (playPromise !== undefined) {
+      playPromise.catch(function() {
+        document.addEventListener('touchstart', function playOnTouch() {
+          heroVideo.play()
+          document.removeEventListener('touchstart', playOnTouch);
+        }, { once: true })
+      })
+    }
+  })
+</script>
 
 </body>
 </html>
