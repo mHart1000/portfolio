@@ -19,9 +19,29 @@ if(isMobileWidth() === false) {
       $(document).ready(function(){
            var isScrolling = false
            var scrollCooldown = 800 // ms - matches animation duration
-           var scrollThreshold = 30 // minimum delta to trigger (filters small touchpad movements)
-           var accumulatedDelta = 0
-           var deltaResetTimeout = null
+           var pendingDirection = null // Stores direction until processed
+           var rafId = null // requestAnimationFrame ID
+           
+           function processScroll() {
+                if (isScrolling || pendingDirection === null) {
+                     pendingDirection = null
+                     return
+                }
+                
+                isScrolling = true
+                var direction = pendingDirection
+                pendingDirection = null
+                
+                if (direction === 'next') {
+                     $("#nextpage").trigger("click")
+                } else {
+                     $("#prevpage").trigger("click")
+                }
+                
+                setTimeout(function() {
+                     isScrolling = false
+                }, scrollCooldown)
+           }
            
            $('body').on('mousewheel wheel DOMMouseScroll', function(event) {
                 event.preventDefault()
@@ -30,33 +50,21 @@ if(isMobileWidth() === false) {
                 if (isScrolling) return // Ignore scroll events during cooldown
                 
                 // Get delta from various event formats
-                var delta = event.originalEvent.wheelDelta || -event.originalEvent.deltaY || -event.originalEvent.detail;
+                var delta = event.originalEvent.wheelDelta || -event.originalEvent.deltaY || -event.originalEvent.detail
                 
-                // Accumulate small deltas (for touchpad)
-                accumulatedDelta += delta
-                
-                // Clear accumulated delta after a pause
-                clearTimeout(deltaResetTimeout)
-                deltaResetTimeout = setTimeout(function() {
-                     accumulatedDelta = 0
-                }, 100);
-                
-                // Only trigger if accumulated delta exceeds threshold
-                if (Math.abs(accumulatedDelta) < scrollThreshold) return;
-                
-                isScrolling = true
-                accumulatedDelta = 0u// Reset after triggering
-                
-                if (delta < 0) {
-                     $("#nextpage").trigger("click");
+                // Determine direction - only set if not already pending
+                if (pendingDirection === null) {
+                     if (delta < 0) {
+                          pendingDirection = 'next'
+                     } else if (delta > 0) {
+                          pendingDirection = 'prev'
+                     }
+                     
+                     // Schedule processing for next animation frame
+                     // This batches all scroll events in the current frame into one action
+                     if (rafId) cancelAnimationFrame(rafId)
+                     rafId = requestAnimationFrame(processScroll)
                 }
-                else if (delta > 0){
-                     $("#prevpage").trigger("click");
-                }
-                
-                setTimeout(function() {
-                     isScrolling = false;
-                }, scrollCooldown);
            });
   
           const aboutBtn = document.querySelector('.about-btn')
