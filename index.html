@@ -128,17 +128,6 @@
   document.addEventListener('DOMContentLoaded', function() {
     let heroVideo = document.querySelector('.heroVideo')
     heroVideo.playbackRate = 0.9
-    
-    // iOS Safari autoplay fix
-    let playPromise = heroVideo.play()
-    if (playPromise !== undefined) {
-      playPromise.catch(function() {
-        document.addEventListener('touchstart', function playOnTouch() {
-          heroVideo.play()
-          document.removeEventListener('touchstart', playOnTouch);
-        }, { once: true })
-      })
-    }
   })
 </script>
 
