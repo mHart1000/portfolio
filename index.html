@@ -33,8 +33,8 @@
     </div>
 
     <div class="pt-page pt-page-1">
-      <video autoplay muted loop playsinline webkit-playsinline preload="auto" class="heroVideo">
-        <source src="./media/sun1440.mp4" type="video/mp4">
+      <video muted loop playsinline webkit-playsinline preload="auto" class="heroVideo" id="heroVideo" poster="./media/sun-poster.jpg">
+        <source src="./media/sun1440_ios_max_comp.mp4" type="video/mp4">
       </video>
 		<header>
 		  <div class="header-1">
@@ -125,21 +125,31 @@
 <script src="./js/jquery-mousewheel-master/jquery.mousewheel.js"></script>
 <script src="./js/scrollflip.js"></script>
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    let heroVideo = document.querySelector('.heroVideo')
-    heroVideo.playbackRate = 0.9
+  (function() {
+    var heroVideo = document.getElementById('heroVideo');
+    if (!heroVideo) return;
     
-    // iOS Safari autoplay fix
-    let playPromise = heroVideo.play()
-    if (playPromise !== undefined) {
-      playPromise.catch(function() {
-        document.addEventListener('touchstart', function playOnTouch() {
-          heroVideo.play()
-          document.removeEventListener('touchstart', playOnTouch);
-        }, { once: true })
-      })
+    heroVideo.playbackRate = 0.9;
+    
+    function tryPlay() {
+      var p = heroVideo.play();
+      if (p && p.catch) {
+        p.catch(function() {
+          // Low power mode - no play button 
+          document.addEventListener('touchstart', function playOnTouch() {
+            heroVideo.play();
+            document.removeEventListener('touchstart', playOnTouch);
+          }, { once: true });
+        });
+      }
     }
-  })
+    
+    heroVideo.addEventListener('loadedmetadata', tryPlay);
+    heroVideo.addEventListener('suspend', tryPlay);
+    
+    setTimeout(tryPlay, 0);
+    setTimeout(tryPlay, 100);
+  })();
 </script>
 
 </body>
