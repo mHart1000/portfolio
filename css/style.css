@@ -83,7 +83,7 @@ p {
 }
 
 	#slides {
-		top:-50px;
+		top:-55px;
 	}
 
 
@@ -110,10 +110,10 @@ p {
 
 	#slides {
 		height: 600px;
-    top: 160px;
+    top: 100px;
 	}
 		.slide-text {
-		font-size: 42px;
+		font-size: 40px;
 	}
 }
 
@@ -421,7 +421,6 @@ header {
     padding: 30px;
   }
   #slides {
-    top: -50px;
   }
   #row-3 {
     font-size: 38px;
