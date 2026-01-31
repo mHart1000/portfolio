@@ -8,7 +8,7 @@
 
 body {
     color: black;
-    font-family: system-ui;
+    font-family: 'Spline Sans', system-ui, sans-serif;
     font-size: 18px;
 }
 
@@ -76,6 +76,7 @@ p {
 .slide-text {
   text-align: center;
   font-size: 56px;
+  font-family: 'Clash Display', system-ui, sans-serif;
 }
 .long-slide-text {
   margin-top: -17px;
@@ -192,7 +193,7 @@ header {
 
 .header-1 {
   font-size: 34px;
-  font-family: Century Gothic;
+  font-family: 'Sora';
   margin-left: 40px;
   text-shadow: 2px 2px 2px #afafaf;
 }
