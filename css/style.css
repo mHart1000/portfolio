@@ -8,7 +8,8 @@
 
 body {
     color: black;
-    font-family: 'Spline Sans', system-ui, sans-serif;
+    font-family: 'Sora', system-ui, sans-serif;
+    font-weight: 300;
     font-size: 18px;
 }
 
@@ -77,6 +78,7 @@ p {
   text-align: center;
   font-size: 56px;
   font-family: 'Clash Display', system-ui, sans-serif;
+  font-weight: 400;
 }
 .long-slide-text {
   margin-top: -17px;
@@ -193,9 +195,10 @@ header {
 
 .header-1 {
   font-size: 34px;
-  font-family: 'Sora';
+  font-family: 'Ubuntu', system-ui, sans-serif;
+  font-weight: 400;
   margin-left: 40px;
-  text-shadow: 2px 2px 2px #afafaf;
+  text-shadow: 1px 1px 1px #afafaf;
 }
 
 .logo-1 {
