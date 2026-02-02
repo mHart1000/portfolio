@@ -184,20 +184,20 @@ p {
 /*//////////// Headeer///////////*/
 
 header {
-  height: 110px;
   position: absolute;
   top: 0;
   right: 0;
   left: 0;
   display: flex;
   justify-content: space-between;
+  align-items: baseline;
 }
 
 .header-1 {
   font-size: 32px;
   font-family: 'Sora', system-ui, sans-serif;
   font-weight: 400;
-  margin-left: 40px;
+  margin-left: 30px;
   text-shadow: 1px 1px 1px #afafaf;
 }
 
@@ -221,7 +221,6 @@ header {
  right: 0;
  margin-right: 0;
  text-align: center;
- padding-top: 22px;
  font-size: 18px;
 }
 
