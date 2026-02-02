@@ -8,7 +8,7 @@
 
 body {
     color: black;
-    font-family: 'Sora', system-ui, sans-serif;
+    font-family: 'Ubuntu', system-ui, sans-serif;
     font-weight: 300;
     font-size: 18px;
 }
@@ -194,8 +194,8 @@ header {
 }
 
 .header-1 {
-  font-size: 34px;
-  font-family: 'Ubuntu', system-ui, sans-serif;
+  font-size: 32px;
+  font-family: 'Sora', system-ui, sans-serif;
   font-weight: 400;
   margin-left: 40px;
   text-shadow: 1px 1px 1px #afafaf;
