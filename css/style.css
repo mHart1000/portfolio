@@ -78,7 +78,7 @@ p {
   text-align: center;
   font-size: 56px;
   font-family: 'Clash Display', system-ui, sans-serif;
-  font-weight: 400;
+  font-weight: 460;
 }
 .long-slide-text {
   margin-top: -17px;
@@ -151,7 +151,7 @@ p {
   background-color: rgba(0, 0, 0, 0.88);
   padding: 40px;
   border-radius: 20px;
-  color: rgb(241 237 207 / 90%);;
+  color: rgb(255 248 198 / 90%);
   font-size: 20px;
   line-height: 1.8;
 }
