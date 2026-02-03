@@ -6,9 +6,35 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "Ubuntu";
+  src: url("./fonts/ubuntu-300.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Sora";
+  src: url("./fonts/sora-400.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Clash Display";
+  src: url("./fonts/ClashDisplay-Variable.woff2") format("woff2");
+  font-weight: 1 900; 
+  font-style: normal;
+  font-display: swap;
+}
+
+
 body {
     color: black;
-    font-family: system-ui;
+    font-family: 'Ubuntu', system-ui, sans-serif;
+    font-weight: 300;
     font-size: 18px;
 }
 
@@ -75,15 +101,17 @@ p {
 
 .slide-text {
   text-align: center;
-  font-size: 56px;
+  font-size: 55px;
+  font-family: 'Clash Display', system-ui, sans-serif;
+  font-weight: 460;
 }
 .long-slide-text {
-  margin-top: -17px;
-  line-height: 1.2;
+  margin-top: -19px;
+  line-height: 1.19;
 }
 
 	#slides {
-		top:-55px;
+		top:-56px;
 	}
 
 
@@ -148,7 +176,7 @@ p {
   background-color: rgba(0, 0, 0, 0.88);
   padding: 40px;
   border-radius: 20px;
-  color: rgb(241 237 207 / 90%);;
+  color: rgb(255 248 198 / 90%);
   font-size: 20px;
   line-height: 1.8;
 }
@@ -181,20 +209,21 @@ p {
 /*//////////// Headeer///////////*/
 
 header {
-  height: 110px;
   position: absolute;
   top: 0;
   right: 0;
   left: 0;
   display: flex;
   justify-content: space-between;
+  align-items: baseline;
 }
 
 .header-1 {
-  font-size: 34px;
-  font-family: Century Gothic;
-  margin-left: 40px;
-  text-shadow: 2px 2px 2px #afafaf;
+  font-size: 32px;
+  font-family: 'Sora', system-ui, sans-serif;
+  font-weight: 400;
+  margin-left: 30px;
+  text-shadow: 1px 1px 1px #afafaf;
 }
 
 .logo-1 {
@@ -217,7 +246,6 @@ header {
  right: 0;
  margin-right: 0;
  text-align: center;
- padding-top: 22px;
  font-size: 18px;
 }
 
