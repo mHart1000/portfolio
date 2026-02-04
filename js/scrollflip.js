@@ -9,23 +9,65 @@
            }
       });
  });
+
+
  //NAVIGATE BETWEEN PAGES BY SCROLLING
- 
  function isMobileWidth() {
     return $('#mobile-indicator').is(':visible');
 }
 if(isMobileWidth() === false) {
  jQuery(function($) {
       $(document).ready(function(){
-           $('body').mousewheel(function(event, delta) {
-                if (delta < 0 ){
-                     $("#nextpage").trigger("click");
+           var isScrolling = false
+           var scrollCooldown = 800 // ms - matches animation duration
+           var pendingDirection = null // Stores direction until processed
+           var rafId = null // requestAnimationFrame ID
+           
+           function processScroll() {
+                if (isScrolling || pendingDirection === null) {
+                     pendingDirection = null
+                     return
                 }
-                else if (delta > 0){
-                     $("#prevpage").trigger("click");
+                
+                isScrolling = true
+                var direction = pendingDirection
+                pendingDirection = null
+                
+                if (direction === 'next') {
+                     $("#nextpage").trigger("click")
+                } else {
+                     $("#prevpage").trigger("click")
+                }
+                
+                setTimeout(function() {
+                     isScrolling = false
+                }, scrollCooldown)
+           }
+           
+           $('body').on('mousewheel wheel DOMMouseScroll', function(event) {
+                event.preventDefault()
+                event.stopPropagation()
+                
+                if (isScrolling) return
+                
+                // Modern browsers use deltaY
+                var delta = -event.originalEvent.deltaY || event.originalEvent.wheelDelta || -event.originalEvent.detail
+                
+                if (pendingDirection === null) {
+                     if (delta < 0) {
+                          pendingDirection = 'next'
+                     } else if (delta > 0) {
+                          pendingDirection = 'prev'
+                     }
+                     
+                     // Schedule processing for next animation frame
+                     // This batches all scroll events in the current frame into one action
+                     if (rafId) cancelAnimationFrame(rafId)
+                     rafId = requestAnimationFrame(processScroll)
                 }
            });
   
+ //NAVIGATE BETWEEN PAGES BY NAV MENU
           const aboutBtn = document.querySelector('.about-btn')
           const prevWorkBtn = document.querySelector('.prev-work-btn')
           const contactBtn = document.querySelector('.contact-btn')
