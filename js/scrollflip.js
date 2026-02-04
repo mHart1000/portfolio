@@ -9,8 +9,9 @@
            }
       });
  });
+
+
  //NAVIGATE BETWEEN PAGES BY SCROLLING
- 
  function isMobileWidth() {
     return $('#mobile-indicator').is(':visible');
 }
@@ -47,12 +48,11 @@ if(isMobileWidth() === false) {
                 event.preventDefault()
                 event.stopPropagation()
                 
-                if (isScrolling) return // Ignore scroll events during cooldown
+                if (isScrolling) return
                 
-                // Get delta from various event formats
-                var delta = event.originalEvent.wheelDelta || -event.originalEvent.deltaY || -event.originalEvent.detail
+                // Modern browsers use deltaY
+                var delta = -event.originalEvent.deltaY || event.originalEvent.wheelDelta || -event.originalEvent.detail
                 
-                // Determine direction - only set if not already pending
                 if (pendingDirection === null) {
                      if (delta < 0) {
                           pendingDirection = 'next'
@@ -67,6 +67,7 @@ if(isMobileWidth() === false) {
                 }
            });
   
+ //NAVIGATE BETWEEN PAGES BY NAV MENU
           const aboutBtn = document.querySelector('.about-btn')
           const prevWorkBtn = document.querySelector('.prev-work-btn')
           const contactBtn = document.querySelector('.contact-btn')
