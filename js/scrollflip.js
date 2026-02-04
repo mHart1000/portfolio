@@ -13,15 +13,15 @@
 
  //NAVIGATE BETWEEN PAGES BY SCROLLING
  function isMobileWidth() {
-    return $('#mobile-indicator').is(':visible');
+    return $('#mobile-indicator').is(':visible')
 }
 if(isMobileWidth() === false) {
  jQuery(function($) {
       $(document).ready(function(){
-           var isScrolling = false
-           var scrollCooldown = 800 // ms - matches animation duration
-           var pendingDirection = null // Stores direction until processed
-           var rafId = null // requestAnimationFrame ID
+           let isScrolling = false
+           const scrollCooldown = 800 // ms - matches animation duration
+           let pendingDirection = null // Stores direction until processed
+           let rafId = null // requestAnimationFrame ID
            
            function processScroll() {
                 if (isScrolling || pendingDirection === null) {
@@ -30,7 +30,7 @@ if(isMobileWidth() === false) {
                 }
                 
                 isScrolling = true
-                var direction = pendingDirection
+                let direction = pendingDirection
                 pendingDirection = null
                 
                 if (direction === 'next') {
@@ -51,7 +51,7 @@ if(isMobileWidth() === false) {
                 if (isScrolling) return
                 
                 // Modern browsers use deltaY
-                var delta = -event.originalEvent.deltaY || event.originalEvent.wheelDelta || -event.originalEvent.detail
+                let delta = -event.originalEvent.deltaY || event.originalEvent.wheelDelta || -event.originalEvent.detail
                 
                 if (pendingDirection === null) {
                      if (delta < 0) {
