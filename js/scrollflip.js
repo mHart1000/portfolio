@@ -9,65 +9,91 @@
            }
       });
  });
-
-
  //NAVIGATE BETWEEN PAGES BY SCROLLING
+ 
  function isMobileWidth() {
-    return $('#mobile-indicator').is(':visible')
+    return $('#mobile-indicator').is(':visible');
 }
 if(isMobileWidth() === false) {
  jQuery(function($) {
       $(document).ready(function(){
-           let isScrolling = false
-           const scrollCooldown = 800 // ms - matches animation duration
-           let pendingDirection = null // Stores direction until processed
-           let rafId = null // requestAnimationFrame ID
-           
-           function processScroll() {
-                if (isScrolling || pendingDirection === null) {
-                     pendingDirection = null
-                     return
+           // Collapse each continuous wheel gesture into a single flip
+           const GESTURE_TIMEOUT_MS = 320; // how long until gesture considered ended
+           const TRIGGER_THRESHOLD = 110;  // how much deltaY before triggering
+           const BASE_LOCK_MS = 450;       // fast path for discrete mouse wheels
+           const INERTIA_LOCK_MS = 1200;   // extended lock when inertia is detected
+           const INERTIA_WINDOW_MS = 220;  // time window to detect continuing scroll after a trigger
+
+           let accumulator = 0;
+           let gestureTimer = null;
+           let lockedUntil = 0;
+           let lastTriggerAt = 0;
+           let postTriggerEvents = 0;
+           let inertiaTimer = null;
+
+           const handleWheel = (event) => {
+                const now = Date.now();
+
+                // Count inertia events during the brief window after a trigger
+                if (lastTriggerAt && (now - lastTriggerAt) <= INERTIA_WINDOW_MS && now < lockedUntil) {
+                     postTriggerEvents += 1;
                 }
-                
-                isScrolling = true
-                let direction = pendingDirection
-                pendingDirection = null
-                
-                if (direction === 'next') {
-                     $("#nextpage").trigger("click")
-                } else {
-                     $("#prevpage").trigger("click")
+
+                if (now < lockedUntil) {
+                     event.preventDefault();
+                     return;
                 }
-                
-                setTimeout(function() {
-                     isScrolling = false
-                }, scrollCooldown)
-           }
-           
-           $('body').on('mousewheel wheel DOMMouseScroll', function(event) {
-                event.preventDefault()
-                event.stopPropagation()
-                
-                if (isScrolling) return
-                
-                // Modern browsers use deltaY
-                let delta = -event.originalEvent.deltaY || event.originalEvent.wheelDelta || -event.originalEvent.detail
-                
-                if (pendingDirection === null) {
-                     if (delta < 0) {
-                          pendingDirection = 'next'
-                     } else if (delta > 0) {
-                          pendingDirection = 'prev'
-                     }
-                     
-                     // Schedule processing for next animation frame
-                     // This batches all scroll events in the current frame into one action
-                     if (rafId) cancelAnimationFrame(rafId)
-                     rafId = requestAnimationFrame(processScroll)
+
+                // Normalize for line-based (mouse wheel) vs pixel-based (trackpad) delta
+                const delta = event.deltaY * (event.deltaMode === 1 ? 40 : 1);
+
+                // If direction flips within a gesture, restart accumulation to avoid double triggers
+                if (accumulator !== 0 && Math.sign(accumulator) !== Math.sign(delta)) {
+                     accumulator = 0;
                 }
-           });
+
+                accumulator += delta;
+                clearTimeout(gestureTimer);
+
+                const triggerNext = accumulator >= TRIGGER_THRESHOLD;
+                const triggerPrev = accumulator <= -TRIGGER_THRESHOLD;
+
+                if (triggerNext) {
+                     $("#nextpage").trigger("click");
+                     lastTriggerAt = now;
+                     postTriggerEvents = 0;
+                     lockedUntil = now + BASE_LOCK_MS;
+                     accumulator = 0;
+                     clearTimeout(inertiaTimer);
+                     inertiaTimer = setTimeout(() => {
+                          if (postTriggerEvents > 0) {
+                               lockedUntil = Math.max(lockedUntil, lastTriggerAt + INERTIA_LOCK_MS);
+                          }
+                     }, INERTIA_WINDOW_MS);
+                } else if (triggerPrev) {
+                     $("#prevpage").trigger("click");
+                     lastTriggerAt = now;
+                     postTriggerEvents = 0;
+                     lockedUntil = now + BASE_LOCK_MS;
+                     accumulator = 0;
+                     clearTimeout(inertiaTimer);
+                     inertiaTimer = setTimeout(() => {
+                          if (postTriggerEvents > 0) {
+                               lockedUntil = Math.max(lockedUntil, lastTriggerAt + INERTIA_LOCK_MS);
+                          }
+                     }, INERTIA_WINDOW_MS);
+                }
+
+                gestureTimer = setTimeout(() => {
+                     accumulator = 0;
+                }, GESTURE_TIMEOUT_MS);
+
+                event.preventDefault();
+           };
+
+           // Use a non-passive listener so preventDefault works in Chrome
+           window.addEventListener('wheel', handleWheel, { passive: false });
   
- //NAVIGATE BETWEEN PAGES BY NAV MENU
           const aboutBtn = document.querySelector('.about-btn')
           const prevWorkBtn = document.querySelector('.prev-work-btn')
           const contactBtn = document.querySelector('.contact-btn')
