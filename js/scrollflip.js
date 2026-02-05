@@ -19,8 +19,8 @@ if(isMobileWidth() === false) {
       $(document).ready(function(){
            // Collapse each continuous wheel gesture into a single flip
            const GESTURE_TIMEOUT_MS = 260;    // how long until gesture considered ended
-           const TRIGGER_THRESHOLD = 140;     // how much deltaY before triggering (trackpads)
-           const BASE_LOCK_DISCRETE_MS = 200; // fast path for discrete mouse wheels
+           const TRIGGER_THRESHOLD = 150;     // how much deltaY before triggering (trackpads)
+           const BASE_LOCK_DISCRETE_MS = 110; // fast path for discrete mouse wheels
            const TRACKPAD_LOCK_MS = 900;      // base lock for trackpads before inertia check
            const INERTIA_LOCK_MS = 1300;      // extended lock when inertia is detected
            const INERTIA_WINDOW_MS = 220;     // time window to detect continuing scroll after a trigger
@@ -32,6 +32,7 @@ if(isMobileWidth() === false) {
            let lastTriggerAt = 0;
            let postTriggerEvents = 0;
            let inertiaTimer = null;
+           let lockedDirection = 0; // 1 for down/next, -1 for up/prev
 
            const handleWheel = (event) => {
                 const now = Date.now();
@@ -46,7 +47,18 @@ if(isMobileWidth() === false) {
                      postTriggerEvents += 1;
                 }
 
-                if (now < lockedUntil) {
+                // For discrete wheels, only block repeats in the same direction; allow and reset lock on opposite
+                if (isDiscrete) {
+                     if (lockedDirection !== 0 && now < lockedUntil) {
+                          const pendingDirection = Math.sign(event.deltaY);
+                          if (pendingDirection === lockedDirection) {
+                               event.preventDefault();
+                               return;
+                          }
+                          // Opposite direction: clear lock so bounce is instant
+                          lockedUntil = 0;
+                     }
+                } else if (now < lockedUntil) {
                      event.preventDefault();
                      return;
                 }
@@ -60,13 +72,17 @@ if(isMobileWidth() === false) {
 
                 // For discrete mouse wheels, trigger immediately per step for snappiness
                 if (isDiscrete) {
+                     const direction = delta > 0 ? 1 : -1;
+
                      if (delta > 0) {
                           $("#nextpage").trigger("click");
                           lastTriggerAt = now;
+                          lockedDirection = 1;
                           lockedUntil = now + BASE_LOCK_DISCRETE_MS;
                      } else if (delta < 0) {
                           $("#prevpage").trigger("click");
                           lastTriggerAt = now;
+                          lockedDirection = -1;
                           lockedUntil = now + BASE_LOCK_DISCRETE_MS;
                      }
                      accumulator = 0;
