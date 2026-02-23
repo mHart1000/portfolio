@@ -17,14 +17,120 @@
 if(isMobileWidth() === false) {
  jQuery(function($) {
       $(document).ready(function(){
-           $('body').mousewheel(function(event, delta) {
-                if (delta < 0 ){
-                     $("#nextpage").trigger("click");
+           // Collapse each continuous wheel gesture into a single flip
+           const GESTURE_TIMEOUT_MS = 260;    // how long until gesture considered ended
+           const TRIGGER_THRESHOLD = 150;     // how much deltaY before triggering (trackpads)
+           const BASE_LOCK_DISCRETE_MS = 110; // fast path for discrete mouse wheels
+           const TRACKPAD_LOCK_MS = 900;      // base lock for trackpads before inertia check
+           const INERTIA_LOCK_MS = 1300;      // extended lock when inertia is detected
+           const INERTIA_WINDOW_MS = 220;     // time window to detect continuing scroll after a trigger
+           const LINE_MODE_STEP = 40;         // approximate pixels per mousewheel step when deltaMode === 1
+
+           let accumulator = 0;
+           let gestureTimer = null;
+           let lockedUntil = 0;
+           let lastTriggerAt = 0;
+           let postTriggerEvents = 0;
+           let inertiaTimer = null;
+           let lockedDirection = 0; // 1 for down/next, -1 for up/prev
+
+           const handleWheel = (event) => {
+                const now = Date.now();
+
+                const isLineMode = event.deltaMode === 1;
+                const wheelDelta = event.wheelDelta || 0;
+                const looksDiscreteDelta = Math.abs(wheelDelta) > 0 && Math.abs(wheelDelta) % 120 === 0;
+                const isDiscrete = isLineMode || looksDiscreteDelta || Math.abs(event.deltaY) >= 100;
+
+                // Count inertia events only for trackpad-like (non-discrete) inputs during the brief window after a trigger
+                if (!isDiscrete && lastTriggerAt && (now - lastTriggerAt) <= INERTIA_WINDOW_MS && now < lockedUntil) {
+                     postTriggerEvents += 1;
                 }
-                else if (delta > 0){
-                     $("#prevpage").trigger("click");
+
+                // For discrete wheels, only block repeats in the same direction; allow and reset lock on opposite
+                if (isDiscrete) {
+                     if (lockedDirection !== 0 && now < lockedUntil) {
+                          const pendingDirection = Math.sign(event.deltaY);
+                          if (pendingDirection === lockedDirection) {
+                               event.preventDefault();
+                               return;
+                          }
+                          // Opposite direction: clear lock so bounce is instant
+                          lockedUntil = 0;
+                     }
+                } else if (now < lockedUntil) {
+                     event.preventDefault();
+                     return;
                 }
-           });
+
+                const delta = event.deltaY * (isLineMode ? LINE_MODE_STEP : 1);
+
+                // If direction flips within a gesture, restart accumulation to avoid double triggers
+                if (accumulator !== 0 && Math.sign(accumulator) !== Math.sign(delta)) {
+                     accumulator = 0;
+                }
+
+                // For discrete mouse wheels, trigger immediately per step for snappiness
+                if (isDiscrete) {
+                     const direction = delta > 0 ? 1 : -1;
+
+                     if (delta > 0) {
+                          $("#nextpage").trigger("click");
+                          lastTriggerAt = now;
+                          lockedDirection = 1;
+                          lockedUntil = now + BASE_LOCK_DISCRETE_MS;
+                     } else if (delta < 0) {
+                          $("#prevpage").trigger("click");
+                          lastTriggerAt = now;
+                          lockedDirection = -1;
+                          lockedUntil = now + BASE_LOCK_DISCRETE_MS;
+                     }
+                     accumulator = 0;
+                     postTriggerEvents = 0;
+                     clearTimeout(inertiaTimer);
+                } else {
+                     accumulator += delta;
+                     clearTimeout(gestureTimer);
+
+                     const triggerNext = accumulator >= TRIGGER_THRESHOLD;
+                     const triggerPrev = accumulator <= -TRIGGER_THRESHOLD;
+
+                     if (triggerNext) {
+                          $("#nextpage").trigger("click");
+                          lastTriggerAt = now;
+                          postTriggerEvents = 0;
+                          lockedUntil = now + TRACKPAD_LOCK_MS;
+                          accumulator = 0;
+                          clearTimeout(inertiaTimer);
+                          inertiaTimer = setTimeout(() => {
+                               if (postTriggerEvents > 0) {
+                                    lockedUntil = Math.max(lockedUntil, lastTriggerAt + INERTIA_LOCK_MS);
+                               }
+                          }, INERTIA_WINDOW_MS);
+                     } else if (triggerPrev) {
+                          $("#prevpage").trigger("click");
+                          lastTriggerAt = now;
+                          postTriggerEvents = 0;
+                          lockedUntil = now + TRACKPAD_LOCK_MS;
+                          accumulator = 0;
+                          clearTimeout(inertiaTimer);
+                          inertiaTimer = setTimeout(() => {
+                               if (postTriggerEvents > 0) {
+                                    lockedUntil = Math.max(lockedUntil, lastTriggerAt + INERTIA_LOCK_MS);
+                               }
+                          }, INERTIA_WINDOW_MS);
+                     }
+
+                     gestureTimer = setTimeout(() => {
+                          accumulator = 0;
+                     }, GESTURE_TIMEOUT_MS);
+                }
+
+                event.preventDefault();
+           };
+
+           // Use a non-passive listener so preventDefault works in Chrome
+           window.addEventListener('wheel', handleWheel, { passive: false });
   
           const aboutBtn = document.querySelector('.about-btn')
           const prevWorkBtn = document.querySelector('.prev-work-btn')
